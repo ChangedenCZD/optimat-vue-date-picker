@@ -1,6 +1,6 @@
 {
   "name": "optimat-vue-date-picker",
-  "version": "0.0.18",
+  "version": "0.0.21",
   "description": "用于Vue.js的日期选择器",
   "main": "dist/datePicker.js",
   "scripts": {

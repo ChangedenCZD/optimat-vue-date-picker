@@ -57,7 +57,7 @@ module.exports = {
                 options: {
                     sourceMap: true,
                 },
-                exclude: /node_modules\/(?!optimat-vue-libs)/,
+                exclude: /node_modules/,
             },
             {
                 test: /\.css$/,

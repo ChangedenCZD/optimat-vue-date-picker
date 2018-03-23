@@ -1,5 +1,4 @@
 import { BaseModule } from './lib/BaseModule';
-// import BaseModule from 'optimat-vue-libs/src/lib/BaseModule';
 import dateformat from 'dateformat';
 import defaultInfoConfig from './defaultInfoConfig';
 
