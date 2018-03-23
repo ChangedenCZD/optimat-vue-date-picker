@@ -1,6 +1,6 @@
 {
   "name": "optimat-vue-date-picker",
-  "version": "0.0.5",
+  "version": "0.0.13",
   "description": "用于Vue.js的日期选择器",
   "main": "dist/datePicker.js",
   "scripts": {
@@ -14,6 +14,14 @@
     "nodejs",
     "datePicker"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChangedenCZD/optimat-vue-date-picker"
+  },
+  "bugs": {
+    "url": "https://github.com/ChangedenCZD/optimat-vue-date-picker/issues"
+  },
+  "homepage": "https://github.com/ChangedenCZD/optimat-vue-date-picker#readme",
   "author": "Changeden",
   "license": "ISC",
   "dependencies": {
