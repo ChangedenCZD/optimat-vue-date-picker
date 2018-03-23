@@ -30,6 +30,7 @@ class Component extends BaseModule {
                 this.isShowDatePickLayout = typeof options.isShow === 'boolean' ? options.isShow : false;
                 this.align = options.align || 'center';
                 this.type = options.type || 'single';
+                this.mode = options.mode || (this.isSingleType ? 'single' : (this.isRangeType ? 'double' : 'single'));
             },
             showDatePickLayout () {
                 typeof this.preShow === 'function' && this.preShow();
@@ -307,6 +308,12 @@ class Component extends BaseModule {
             },
             isRangeType () {
                 return this.type === 'range';
+            },
+            isSingleMode () {
+                return this.mode === 'single';
+            },
+            isDoubleMode () {
+                return this.mode === 'double';
             }
         });
         this.setWatch({

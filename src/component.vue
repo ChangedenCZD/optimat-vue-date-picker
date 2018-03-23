@@ -13,14 +13,14 @@
                     <th class="year-item pdl10 pdr10" v-if="leftMonthDateInfo.date">
                         <div class="abs lt0 w100 h100">{{format(leftMonthDateInfo.date[4],'yyyy - mm')}}</div>
                         <img class="year-select-btn last-year-btn left" :src="icons.left" @click="lastMonth"
-                             v-if="isRangeType&&!isCurrentMonth(currentLeftMonth)"/>
+                             v-if="isDoubleMode&&!isCurrentMonth(currentLeftMonth)"/>
                         <img class="year-select-btn last-year-btn left" :src="icons.left" @click="lastMonth"
-                             v-if="isSingleType&&!isCurrentMonth(currentLeftMonth)"/>
+                             v-if="isSingleMode&&!isCurrentMonth(currentLeftMonth)"/>
                         <img class="year-select-btn last-year-btn right" :src="icons.right" @click="nextMonth"
-                             v-if="isSingleType"/>
+                             v-if="isSingleMode"/>
                     </th>
-                    <th class="pdl10 pdr10" v-if="isRangeType"></th>
-                    <th class="year-item pdl10 pdr10 rel" v-if="isRangeType&&rightMonthDateInfo.date">
+                    <th class="pdl10 pdr10" v-if="isDoubleMode"></th>
+                    <th class="year-item pdl10 pdr10 rel" v-if="isDoubleMode&&rightMonthDateInfo.date">
                         <div class="abs lt0 w100 h100">{{format(rightMonthDateInfo.date[4],'yyyy - mm')}}</div>
                         <img class="year-select-btn next-year-btn right" :src="icons.right" @click="nextMonth"/>
                     </th>
@@ -40,8 +40,8 @@
                             </tr>
                         </table>
                     </td>
-                    <td class="pdl10 pdr10" v-if="isRangeType"></td>
-                    <td v-if="isRangeType">
+                    <td class="pdl10 pdr10" v-if="isDoubleMode"></td>
+                    <td v-if="isDoubleMode">
                         <table class="month-layout right-month pdl10 pdr10 pdb10">
                             <tr class="day-of-week-description">
                                 <th class="date-item invalid-item" v-for="day in defaultDayOfWeek">{{day}}</th>
@@ -62,8 +62,10 @@
 </template>
 
 <script>
-    import './component.scss';
-
     const Component = require('./component');
     export default new Component();
 </script>
+
+<style lang="scss" scoped="true">
+    @import "./component.scss";
+</style>
