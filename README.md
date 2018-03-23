@@ -26,10 +26,11 @@ import DatePicker from 'optimat-vue-date-picker'
 
 | Options         | Type     | Description                 | Result |
 |-----------------|:--------:|:---------------------------:|-------:|
-| options.isShow  | boolean  | 强制显示(true)或隐藏(false)    |        |
-| options.preShow | function | 选择框弹出前执行（强制显示时无效） |        |
-| options.onShow  | function | 选择框弹出后执行               |        |
-| options.preDismiss | function | 选择框消失前执行（强制隐藏时无效）| |
-| options.onDismiss | function | 选择框消失后执行| |
-| options.onStartDateChanged | function | 开始日期变更时执行 | |
-| options.onEndDateChanged | function | 结束日期变更时执行 | |
+| options.isShow  | boolean | 强制显示(true)或隐藏(false) | |
+| options.preShow | function | 选择框弹出前执行（强制显示时无效） | |
+| options.onShow  | function | 选择框弹出后执行 | |
+| options.preDismiss | function | 选择框消失前执行（强制隐藏时无效）| (startDate, endDate) |
+| options.onDismiss | function | 选择框消失后执行| (startDate, endDate) |
+| options.onStartDateChanged | function | 开始日期变更时执行 | (startDate) |
+| options.onEndDateChanged | function | 结束日期变更时执行 | (endDate) |
+| options.placeholder | string | 无日期内容时的占位符 | |
