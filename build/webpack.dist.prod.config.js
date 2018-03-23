@@ -28,16 +28,15 @@ module.exports = merge(webpackBaseConfig, {
         }
     },
     plugins: [
-        // @todo
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            sourceMap: true,
-            parallel: true
-        })
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     },
+        //     sourceMap: true,
+        //     parallel: true
+        // })
     ]
 });
