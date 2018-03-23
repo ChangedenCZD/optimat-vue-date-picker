@@ -24,8 +24,8 @@ import DatePicker from 'optimat-vue-date-picker'
 
 ### 功能（Api）
 
-| Options         | Type     | Description                 | Result  |
-|-----------------|:--------:|:---------------------------:|--------:|
+| Options         | Type     | Description                 | Result   |
+|-----------------|:--------:|:---------------------------:|:--------:|
 | options.isShow  | boolean | 强制显示(true)或隐藏(false) | |
 | options.preShow | function | 选择框弹出前执行（强制显示时无效） | |
 | options.onShow  | function | 选择框弹出后执行 | |
