@@ -31,6 +31,8 @@ import DatePicker from 'optimat-vue-date-picker'
 | options.onShow  | function | 选择框弹出后执行 | |
 | options.preDismiss | function | 选择框消失前执行（强制隐藏时无效）| (startDate, endDate) |
 | options.onDismiss | function | 选择框消失后执行| (startDate, endDate) |
-| options.onStartDateChanged | function | 开始日期变更时执行 | (startDate) |
-| options.onEndDateChanged | function | 结束日期变更时执行 | (endDate) |
+| options.onStartDateChanged | function | 开始日期变更时执行 （单选模式必须加入该事件）| (startDate) |
+| options.onEndDateChanged | function | 结束日期变更时执行（单选模式不会执行） | (endDate) |
 | options.placeholder | string | 无日期内容时的占位符 | |
+| options.align | string | 选择框位置：居左(left)，居中(center)，居右(right) | |
+| options.type | string | 选择器类型：单选(single)，范围(range) | |

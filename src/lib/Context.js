@@ -1,5 +1,8 @@
-class BaseClass {
+const Class = require('./Class');
+
+class BaseClass extends Class {
     constructor () {
+        super();
     }
 }
 
