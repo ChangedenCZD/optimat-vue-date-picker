@@ -1,12 +1,13 @@
 {
   "name": "optimat-vue-date-picker",
-  "version": "0.0.24",
+  "version": "0.0.28",
   "description": "用于Vue.js的日期选择器",
   "main": "dist/datePicker.js",
   "scripts": {
     "dev": "webpack --config build/webpack.dist.dev.config.js",
     "prod": "webpack --config build/webpack.dist.prod.config.js",
-    "build": "npm run dev && npm run prod"
+    "build": "npm run dev && npm run prod",
+    "pub": "npm run build && npm publish"
   },
   "keywords": [
     "vuejs",

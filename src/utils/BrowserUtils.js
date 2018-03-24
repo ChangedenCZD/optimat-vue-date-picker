@@ -1,4 +1,5 @@
 let globalApp = null;
+window.remScale = (window.fontSize = parseFloat(window.getComputedStyle(window.document.querySelector('html')).fontSize)) / 32;
 
 function stdout (message) {
     if (message instanceof Error) {
@@ -60,6 +61,10 @@ function setWindowSize () {
     });
 }
 
+function computeRemScale () {
+    window.remScale = (window.fontSize = parseFloat(window.getComputedStyle(window.document.querySelector('html')).fontSize)) / 32;
+}
+
 function registerGlobalApp (app) {
     globalApp = window.globalApp = app;
     setWindowSize();
@@ -77,7 +82,7 @@ function initApp (app) {
     app.isUCWeb = /UCBrowser/.test(ua);
     app.isAlipay = /AlipayClient/.test(ua);
     app.isAndroid = /Android/.test(ua);
-    window.remScale = (window.fontSize = parseFloat(window.getComputedStyle(window.document.querySelector('html')).fontSize)) / 32;
+    computeRemScale();
 }
 
 function getValidParam (param) {
@@ -131,5 +136,6 @@ module.exports = {
     canBack,
     setTitle,
     to,
-    open
+    open,
+    computeRemScale
 };

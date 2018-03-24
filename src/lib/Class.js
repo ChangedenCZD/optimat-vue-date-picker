@@ -41,6 +41,10 @@ class Class {
     static stdout (message) {
         BrowserUtils.stdout(message);
     }
+
+    static computeRemScale () {
+        BrowserUtils.computeRemScale();
+    }
 }
 
 module.exports = Class;

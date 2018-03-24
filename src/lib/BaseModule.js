@@ -3,6 +3,7 @@ import Context from './Context';
 class BaseModule extends Context {
     constructor () {
         super();
+        BaseModule.computeRemScale();
         let self = this;
         this.app = null;
         this.data = function () {

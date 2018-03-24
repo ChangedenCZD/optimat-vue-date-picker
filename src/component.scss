@@ -1,6 +1,9 @@
 @import "~optimat-vue-assets/assets/scss/base.scss";
 
 .ui-picker-date-layout {
+  * {
+    z-index: inherit;
+  }
   .date-input-layout {
     width: 200px;
     height: 30px;

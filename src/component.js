@@ -184,6 +184,7 @@ class Component extends BaseModule {
             recompute () {
                 this.computeLeftMonthDateInfo();
                 this.computeRightMonthDateInfo();
+                this.pickerMinWidth = window.remScale * 60 + 24 * 7 * 2;
             },
             lastMonth () {
                 if (!this.isCurrentMonth(this.currentLeftMonth)) {
@@ -357,7 +358,8 @@ class Component extends BaseModule {
             startDate: 0,
             endDate: 0,
             fakeEndDate: 0,
-            pickerLeft: 'auto'
+            pickerLeft: 'auto',
+            pickerMinWidth: 'auto'
         };
     }
 

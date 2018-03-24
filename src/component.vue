@@ -6,7 +6,8 @@
             <img class="abs rt0" v-if="mergeDate" :src="icons.clear" @click="clearDate"/>
             <img class="abs rt0" v-else :src="icons.calendar" @click="toggleDatePickLayout"/>
         </div>
-        <div class="date-pick-layout bg-white shadow abs over-hidden" :style="{left:pickerLeft+'px'}"
+        <div class="date-pick-layout bg-white shadow abs over-hidden"
+             :style="{left:pickerLeft+'px',minWidth:pickerMinWidth+'px'}"
              v-show="isShowDatePickLayout">
             <table>
                 <tr>
