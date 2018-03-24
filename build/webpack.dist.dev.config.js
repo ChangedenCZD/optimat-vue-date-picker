@@ -14,8 +14,8 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'datePicker.js',
-        library: 'datePicker',
+        filename: 'index.js',
+        library: 'index',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

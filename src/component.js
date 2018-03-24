@@ -1,13 +1,13 @@
 import { BaseModule } from './lib/BaseModule';
 import dateformat from 'dateformat';
 import defaultInfoConfig from './defaultInfoConfig';
+import icons from './icons.json';
 
 const defaultDayOfWeek = defaultInfoConfig.defaultDayOfWeek;
 const defaultMaxDayOfWeek = defaultInfoConfig.defaultMaxDayOfWeek;
 const defaultMaxRows = defaultInfoConfig.defaultMaxRows;
 const defaultMaxDaysOfRows = defaultInfoConfig.defaultMaxDaysOfRows;
 const monthObjectKey = defaultInfoConfig.monthObjectKey;
-const icons = defaultInfoConfig.icons;
 
 let currentLeftMonth = new Date();
 
