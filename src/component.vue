@@ -530,7 +530,7 @@
 
     .ui-picker-date-layout {
         * {
-            z-index: inherit;
+            z-index: unset;
         }
         .date-input-layout {
             width: 200px;
