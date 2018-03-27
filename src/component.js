@@ -31,6 +31,7 @@ class Component extends BaseModule {
                 this.align = options.align || 'center';
                 this.type = options.type || 'single';
                 this.mode = options.mode || (this.isSingleType ? 'single' : (this.isRangeType ? 'double' : 'single'));
+                this.autoClear = typeof options.autoClear === 'boolean' ? options.autoClear : false;
             },
             showDatePickLayout () {
                 typeof this.preShow === 'function' && this.preShow();
@@ -43,6 +44,7 @@ class Component extends BaseModule {
                 startDate = startDate ? this.parseDate(new Date(startDate)) : null;
                 endDate = endDate ? this.parseDate(new Date(endDate)) : null;
                 typeof this.preDismiss === 'function' && this.preDismiss(startDate, endDate);
+                this.$el.querySelector('.date-input').blur();
                 this.isShowDatePickLayout = false;
                 typeof this.onDismiss === 'function' && this.onDismiss(startDate, endDate);
             },
@@ -210,6 +212,11 @@ class Component extends BaseModule {
             getCurrentDate () {
                 return new Date(this.currentLeftMonth.getTime());
             },
+            focusInput (e) {
+                if (e.target.id !== 'input') {
+                    e.preventDefault();
+                }
+            },
             select (day) {
                 if (!day.invalid) { // 如果是有效日期
                     let time = day.time;
@@ -219,6 +226,10 @@ class Component extends BaseModule {
                     } else if (this.isRangeType) {
                         let startDate = this.startDate;
                         let endDate = this.endDate;
+                        if (this.autoClear && endDate) {
+                            this.clearDate();
+                            startDate = 0;
+                        }
                         if (startDate) {
                             if (this.isStartDate(day)) {
                                 this.clearDate();

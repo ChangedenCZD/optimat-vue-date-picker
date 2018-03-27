@@ -1,3 +1,4 @@
+@import "~optimat-vue-assets/assets/css/reset.css";
 @import "~optimat-vue-assets/assets/scss/base.scss";
 
 .ui-picker-date-layout {
@@ -28,11 +29,13 @@
       div {
         font-size: 14px;
         text-align: center;
+        z-index: 1;
       }
       .year-select-btn {
         width: 16px;
         height: 16px;
         cursor: pointer;
+        z-index: 2;
       }
     }
     .invalid-item, .preview-item {

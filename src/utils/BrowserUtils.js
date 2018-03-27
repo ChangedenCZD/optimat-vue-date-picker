@@ -1,5 +1,4 @@
 let globalApp = null;
-window.remScale = (window.fontSize = parseFloat(window.getComputedStyle(window.document.querySelector('html')).fontSize)) / 32;
 
 function stdout (message) {
     if (message instanceof Error) {

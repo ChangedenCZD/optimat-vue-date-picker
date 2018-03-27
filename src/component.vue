@@ -2,16 +2,17 @@
     <section class="component-layout ui-picker-date-layout rel">
         <div class="date-input-layout">
             <input class="date-input w100 h100 pdl5 pr5 bg-white" contenteditable="false" :placeholder="placeholder"
-                   v-model="mergeDate" @click="toggleDatePickLayout"/>
+                   v-model="mergeDate" v-on:focus="isShowDatePickLayout=true" v-on:blur="isShowDatePickLayout=false"/>
             <img class="abs rt0" v-if="mergeDate" :src="icons.clear" @click="clearDate"/>
-            <img class="abs rt0" v-else :src="icons.calendar" @click="toggleDatePickLayout"/>
+            <img class="abs rt0" v-else :src="icons.calendar" @click="focusInput"/>
         </div>
         <div class="date-pick-layout bg-white shadow abs over-hidden"
              :style="{left:pickerLeft+'px',minWidth:pickerMinWidth+'px'}"
+             v-on:mousedown="focusInput"
              v-show="isShowDatePickLayout">
             <table>
                 <tr>
-                    <th class="year-item pdl10 pdr10" v-if="leftMonthDateInfo.date">
+                    <th class="year-item pdl10 pdr10 rel" v-if="leftMonthDateInfo.date">
                         <div class="abs lt0 w100 h100">{{format(leftMonthDateInfo.date[4],'yyyy - mm')}}</div>
                         <img class="year-select-btn last-year-btn left" :src="icons.left" @click="lastMonth"
                              v-if="isDoubleMode&&!isCurrentMonth(currentLeftMonth)"/>
