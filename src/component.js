@@ -32,6 +32,8 @@ class Component extends BaseModule {
                 this.type = options.type || 'single';
                 this.mode = options.mode || (this.isSingleType ? 'single' : (this.isRangeType ? 'double' : 'single'));
                 this.autoClear = typeof options.autoClear === 'boolean' ? options.autoClear : false;
+                this.defaultStartDate = options.defaultStartDate instanceof Date ? options.defaultStartDate : new Date();
+                this.currentLeftMonth = this.defaultStartDate;
             },
             showDatePickLayout () {
                 typeof this.preShow === 'function' && this.preShow();
@@ -197,7 +199,7 @@ class Component extends BaseModule {
                 this.setDate(1);
             },
             isCurrentMonth (date) {
-                let currentDate = new Date();
+                let currentDate = this.defaultStartDate || new Date();
                 return date.getFullYear() === currentDate.getFullYear() && date.getMonth() === currentDate.getMonth();
             },
             isCurrentDate (lDate, rDate) {

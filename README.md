@@ -38,3 +38,4 @@ import DatePicker from 'optimat-vue-date-picker'
 | options.type | string | 选择器类型：单选(single)，范围(range) | single | |
 | options.mode | string | 选择器模式：单个日历(single)，两个日历(double) | type == single ? single : double | |
 | options.autoClear | boolean | 是否自动清空（范围选择时有效） | false | |
+| options.defaultStartDate | date | 默认开始日期 | 当前日期 | |
