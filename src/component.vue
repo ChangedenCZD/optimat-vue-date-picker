@@ -15,9 +15,9 @@
                     <th class="year-item pdl10 pdr10 rel" v-if="leftMonthDateInfo.date">
                         <div class="abs lt0 w100 h100">{{format(leftMonthDateInfo.date[4],'yyyy - mm')}}</div>
                         <img class="year-select-btn last-year-btn left" :src="icons.left" @click="lastMonth"
-                             v-if="isDoubleMode&&!isCurrentMonth(currentLeftMonth)"/>
+                             v-if="isDoubleMode&&canShowLastMonth(currentLeftMonth)"/>
                         <img class="year-select-btn last-year-btn left" :src="icons.left" @click="lastMonth"
-                             v-if="isSingleMode&&!isCurrentMonth(currentLeftMonth)"/>
+                             v-if="isSingleMode&&canShowLastMonth(currentLeftMonth)"/>
                         <img class="year-select-btn last-year-btn right" :src="icons.right" @click="nextMonth"
                              v-if="isSingleMode"/>
                     </th>
@@ -35,7 +35,7 @@
                             </tr>
                             <tr v-for="row in leftMonthDateInfo.mergeList">
                                 <td class="date-item"
-                                    :class="[day.invalid?'invalid-item':(day.preview?'preview-item':'active-item'),isStartDate(day),isEndDate(day),isMiddleDate(day)]"
+                                    :class="[day.invalid?'invalid-item':(day.preview?'preview-item':'active-item'),isDefaultStartDate(day),isStartDate(day),isEndDate(day),isMiddleDate(day)]"
                                     v-for="day in row" :date-index="day.index" :date-time="day.time"
                                     @click="select(day)">{{day.day}}
                                 </td>
@@ -50,7 +50,7 @@
                             </tr>
                             <tr v-for="row in rightMonthDateInfo.mergeList">
                                 <td class="date-item"
-                                    :class="[day.invalid?'preview-item':(day.preview?'preview-item':'active-item'),isStartDate(day),isEndDate(day),isMiddleDate(day)]"
+                                    :class="[day.invalid?'preview-item':(day.preview?'preview-item':'active-item'),isDefaultStartDate(day),isStartDate(day),isEndDate(day),isMiddleDate(day)]"
                                     v-for="day in row" :date-index="day.index" :date-time="day.time"
                                     @click="select(day)">{{day.day}}
                                 </td>
@@ -582,6 +582,9 @@
             .active-item:hover,
             .preview-item:hover {
                 background-color: #FFEEBC;
+            }
+            .default-start-date-item {
+                border: 1px dashed;
             }
             .start-date-item,
             .end-date-item {

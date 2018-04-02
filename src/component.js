@@ -34,6 +34,7 @@ class Component extends BaseModule {
                 this.autoClear = typeof options.autoClear === 'boolean' ? options.autoClear : false;
                 this.defaultStartDate = options.defaultStartDate instanceof Date ? options.defaultStartDate : new Date();
                 this.currentLeftMonth = this.defaultStartDate;
+                this.selectPassDate = typeof options.selectPassDate === 'boolean' ? options.selectPassDate : false;
             },
             showDatePickLayout () {
                 typeof this.preShow === 'function' && this.preShow();
@@ -104,6 +105,10 @@ class Component extends BaseModule {
                     }
                     let invalid = isCurrentMonth && index < validDayStart; // 是否为无效日期
                     let preview = index >= previewDayStart || (!isCurrentMonth && index < lastMonthDaysLength); // 是否为预览日期
+                    if (this.selectPassDate) { // 能选择以往日期
+                        preview = preview || index < lastMonthDays.length;
+                        invalid = false;
+                    }
                     let realDate = new Date();
                     realDate.setFullYear(date[0]);
                     if (index < lastMonthDaysLength) { // 上月
@@ -188,10 +193,10 @@ class Component extends BaseModule {
             recompute () {
                 this.computeLeftMonthDateInfo();
                 this.computeRightMonthDateInfo();
-                this.pickerMinWidth = window.remScale * 60 + 24 * 7 * 2;
+                this.pickerMinWidth = window.remScale * 60 + 25 * 7 * 2;
             },
             lastMonth () {
-                if (!this.isCurrentMonth(this.currentLeftMonth)) {
+                if (this.canShowLastMonth(this.currentLeftMonth)) {
                     this.setDate(-1);
                 }
             },
@@ -206,7 +211,7 @@ class Component extends BaseModule {
                 return lDate.getFullYear() === rDate.getFullYear() && lDate.getMonth() === rDate.getMonth() && lDate.getDate() === rDate.getDate();
             },
             setDate (offset) {
-                let currentLeftMonth = this.currentLeftMonth;
+                let currentLeftMonth = new Date(this.currentLeftMonth.getTime());
                 let month = currentLeftMonth.getMonth() + offset;
                 currentLeftMonth.setMonth(month);
                 this.currentLeftMonth = new Date(currentLeftMonth.getTime());
@@ -250,6 +255,11 @@ class Component extends BaseModule {
                         }
                     }
                 }
+            },
+            isDefaultStartDate (day) {
+                let realDate = new Date(day.time);
+                let startDate = this.defaultStartDate || new Date();
+                return this.isCurrentDate(realDate, startDate) ? 'default-start-date-item' : '';
             },
             isStartDate (day) {
                 let realDate = new Date(day.time);
@@ -296,6 +306,9 @@ class Component extends BaseModule {
                 if (this.autoDismiss) {
                     this.hideDatePickLayout();
                 }
+            },
+            canShowLastMonth (date) {
+                return this.selectPassDate || !this.isCurrentMonth(date);
             }
         });
         this.setCompute({
