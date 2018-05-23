@@ -35,6 +35,10 @@ class Component extends BaseModule {
                 this.defaultStartDate = options.defaultStartDate instanceof Date ? options.defaultStartDate : new Date();
                 this.currentLeftMonth = this.defaultStartDate;
                 this.selectPassDate = typeof options.selectPassDate === 'boolean' ? options.selectPassDate : false;
+                if ((typeof options.reset === 'boolean' ? options.reset : false)) {
+                    this.startDate = 0;
+                    this.endDate = 0;
+                }
             },
             showDatePickLayout () {
                 typeof this.preShow === 'function' && this.preShow();

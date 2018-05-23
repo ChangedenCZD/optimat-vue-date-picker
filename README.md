@@ -40,3 +40,4 @@ import DatePicker from 'optimat-vue-date-picker'
 | autoClear | boolean | 是否自动清空（范围选择时有效） | false | |
 | defaultStartDate | date | 默认开始日期 | 当前日期 | |
 | selectPassDate | boolean | 能否选择以往日期 | false | |
+| reset | boolean | 是否重置所有日期（只在options更新时执行） | false | |
