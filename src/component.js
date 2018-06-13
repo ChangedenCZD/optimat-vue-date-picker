@@ -53,7 +53,9 @@ class Component extends BaseModule {
                 typeof this.preDismiss === 'function' && this.preDismiss(startDate, endDate);
                 this.$el.querySelector('.date-input').blur();
                 this.isShowDatePickLayout = false;
-                typeof this.onDismiss === 'function' && this.onDismiss(startDate, endDate);
+                this.$nextTick(() => {
+                    typeof this.onDismiss === 'function' && this.onDismiss(startDate, endDate);
+                });
             },
             // toggleDatePickLayout () {
             //     if (this.isShowDatePickLayout) {
@@ -356,6 +358,8 @@ class Component extends BaseModule {
                         this.computePickerLeft();
                         typeof this.onShow === 'function' && this.onShow();
                     });
+                } else {
+                    this.hideDatePickLayout();
                 }
             },
             currentLeftMonth () {
