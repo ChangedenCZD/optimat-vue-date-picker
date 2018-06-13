@@ -24,7 +24,7 @@ class Component extends BaseModule {
                 this.onEndDateChanged = typeof options.onEndDateChanged === 'function' ? options.onEndDateChanged : null;
                 this.onDismiss = typeof options.onDismiss === 'function' ? options.onDismiss : null;
                 this.onShow = typeof options.onShow === 'function' ? options.onShow : null;
-                this.preDismiss = typeof options.onDismiss === 'function' ? options.onDismiss : null;
+                this.preDismiss = typeof options.preDismiss === 'function' ? options.preDismiss : null;
                 this.preShow = typeof options.preShow === 'function' ? options.preShow : null;
                 this.placeholder = options.placeholder || '';
                 this.isShowDatePickLayout = typeof options.isShow === 'boolean' ? options.isShow : false;
@@ -55,13 +55,13 @@ class Component extends BaseModule {
                 this.isShowDatePickLayout = false;
                 typeof this.onDismiss === 'function' && this.onDismiss(startDate, endDate);
             },
-            toggleDatePickLayout () {
-                if (this.isShowDatePickLayout) {
-                    this.hideDatePickLayout();
-                } else {
-                    this.showDatePickLayout();
-                }
-            },
+            // toggleDatePickLayout () {
+            //     if (this.isShowDatePickLayout) {
+            //         this.hideDatePickLayout();
+            //     } else {
+            //         this.showDatePickLayout();
+            //     }
+            // },
             parseDate (date) {
                 let year = date.getFullYear();
                 let month = date.getMonth() + 1;
@@ -350,9 +350,11 @@ class Component extends BaseModule {
         this.setWatch({
             isShowDatePickLayout (value) {
                 if (value) {
+                    typeof this.preShow === 'function' && this.preShow();
                     this.recompute();
                     this.$nextTick(() => {
                         this.computePickerLeft();
+                        typeof this.onShow === 'function' && this.onShow();
                     });
                 }
             },
